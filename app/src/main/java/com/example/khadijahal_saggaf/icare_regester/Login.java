@@ -9,6 +9,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +25,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     EditText editTextEmail, editTextPassword;
     private FirebaseAuth mAuth;
     ProgressBar progressBar;
+    ImageView im;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         findViewById(R.id.textView2).setOnClickListener(this);
         findViewById(R.id.login_button).setOnClickListener(this);
 
+        im=findViewById(R.id.imageView3);
+        im.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Login.this,Main2Activity.class));
+            }
+        });
 
     }
 
@@ -49,7 +58,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
         FirebaseUser currentUser=mAuth.getCurrentUser();
         if(currentUser!=null){
-            startActivity(new Intent(Login.this,Home.class));
+            startActivity(new Intent(Login.this,Main2Activity.class));
 
         }
     }
